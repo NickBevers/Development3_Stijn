@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView, FlatList, TextInput } from 'react-native';
 
-import CardItem from '../../components/CardItem';
+import CardItem from '../components/CardItem';
 
 const HomeScreen = ({ navigation }) => {
   const [crypto, setCrypto] = useState([]);

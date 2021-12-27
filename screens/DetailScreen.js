@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { getImage } from './../../components/CardItem';
+import { getImage } from '../components/CardItem';
 
 const DetailScreen = ({ route, navigation }) => {
   const {currencyId} = route.params;
