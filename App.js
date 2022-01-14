@@ -50,7 +50,7 @@ function App(){
   return(
     <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name={splash} component={SplashScreen}/>
+          <Stack.Screen name={splash} component={SplashScreen} options={{ headerShown: false }}/>
           <Stack.Screen name={'HomeTab'} component={HomeScreenTab} options={{ headerShown: false }}/>
           <Stack.Screen name={detail} component={DetailScreen} />
           <Stack.Screen name={wallet} component={DetailScreen}/>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { getImage } from '../components/CardItem';
+import DetailBox from '../components/DetailBox';
+import {DetailPercentageBox} from '../components/DetailBox';
 
 const DetailScreen = ({ route, navigation }) => {
   const {currencyId} = route.params;
@@ -28,45 +30,18 @@ const DetailScreen = ({ route, navigation }) => {
     getCryptoDetail();
   }, []);
 
-  useEffect(()=>{
-    console.log(cryptoData)
-  }, [cryptoData]);
-
   return (
     <View style={styles.screen}>
       <View style={styles.topImage}>
         <Image style={styles.image} source={getImage(currencyId)}></Image>
       </View>
       <View style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.title}>Current price</Text>
-          <Text style={styles.square}>{cryptoData["PRICE"]}</Text>
-        </View>
-
-        <View style={styles.card}>
-          <Text style={styles.title}>Change today</Text>
-          <Text style={styles.square}>% {cryptoData["CHANGEPCTDAY"]}</Text>
-        </View>
-
-        <View style={styles.card}>
-          <Text style={styles.title}>Change past 24h</Text>
-          <Text style={styles.square}>% {cryptoData["CHANGEPCT24HOUR"]}</Text>
-        </View>
-
-        <View style={styles.card}>
-          <Text style={styles.title}>Lowest price this hour</Text>
-          <Text style={styles.square}>{cryptoData["LOWHOUR"]}</Text>
-        </View>
-
-        <View style={styles.card}>
-          <Text style={styles.title}>Highest price this hour</Text>
-          <Text style={styles.square}>{cryptoData["HIGHHOUR"]}</Text>
-        </View>
-
-        <View style={styles.card}>
-          <Text style={styles.title}>Market cap</Text>
-          <Text style={styles.square}>{cryptoData["MKTCAP"]}</Text>
-        </View>
+        <DetailBox title="Current price" data={cryptoData["PRICE"]}/>
+        <DetailPercentageBox title="Change today" data={cryptoData["CHANGEPCTDAY"]}/>
+        <DetailPercentageBox title="Change past 24h" data={cryptoData["CHANGEPCT24HOUR"]}/>
+        <DetailBox title="Lowest price this hour" data={cryptoData["LOWHOUR"]}/>
+        <DetailBox title="Highest price this hour" data={cryptoData["HIGHHOUR"]}/>
+        <DetailBox title="Market cap" data={cryptoData["MKTCAP"]}/>
       </View>
     </View >
   );
